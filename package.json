@@ -1,0 +1,38 @@
+{
+  "name": "api-tests-typescript",
+  "version": "1.0.0",
+  "description": "API tests with TypeScript",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "clean": "rimraf build/",
+    "env": "node ./environment.js",
+    "test-dev": "npm run clean && npm run env && npm run build && cd build/test/ && cross-env ENVIRONMENT='dev' mocha --file *.js --config ../../.mocharc.js --timeout 25000",
+    "test": "npm run clean && npm run env && npm run build && cd build/test/ && cross-env ENVIRONMENT='prod' mocha --file *.js --config ../../.mocharc.js --timeout 25000",
+    "report": "allure generate ./allure-results -c && allure open"
+  },
+  "author": "Victor Pereira Guerra",
+  "license": "ISC",
+  "devDependencies": {
+    "@faker-js/faker": "^7.3.0",
+    "@types/chai": "^4.3.1",
+    "@types/mocha": "^9.1.1",
+    "@typescript-eslint/eslint-plugin": "^5.31.0",
+    "@typescript-eslint/parser": "^5.31.0",
+    "allure-mocha": "^2.0.0-beta.19",
+    "chai": "^4.3.6",
+    "chai-as-promised": "^7.1.1",
+    "chai-http": "^4.3.0",
+    "cross-env": "^7.0.3",
+    "dotenv": "^16.0.1",
+    "eslint": "^8.20.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.26.0",
+    "joi": "^17.6.0",
+    "mocha": "^10.0.0",
+    "mocha-multi-reporters": "^1.5.1",
+    "rimraf": "^3.0.2",
+    "serverest": "^2.26.1",
+    "typescript": "^4.7.4"
+  }
+}
